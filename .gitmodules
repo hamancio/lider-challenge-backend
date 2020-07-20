@@ -1,0 +1,6 @@
+[submodule "lider-challenge-front"]
+	path = lider-challenge-front
+	url = https://github.com/hamancio/lider-challenge-front
+[submodule "lider-challenge-backend"]
+	path = lider-challenge-backend
+	url = https://github.com/hamancio/lider-challenge-backend
