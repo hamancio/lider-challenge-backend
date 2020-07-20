@@ -3,11 +3,30 @@ version: '2' # specify docker-compose version
 # Define the services/containers to be run
 services:
   angular: # name of the first service
+    restart: always
     build: lider-challenge-front # specify the directory of the Dockerfile
     ports:
       - "4200:4200" # specify port forewarding
+    links:
+      - express
 
   express: #name of the second service
+    restart: always
     build: lider-challenge-backend # specify the directory of the Dockerfile
     ports:
       - "3001:3001" #specify ports forewarding
+    depends_on:
+        - mongo
+    links:
+      - mongo
+  
+  mongo: 
+    restart: always
+    image: mongo
+    ports: 
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    
+volumes: 
+  mongodata:
